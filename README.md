@@ -1,3 +1,2 @@
-TelegramBotApi - https://core.telegram.org/bots/api /n
-g
+TelegramBotApi - https://core.telegram.org/bots/api
  

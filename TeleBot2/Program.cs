@@ -4,19 +4,11 @@
     using System.Linq;
     using System.Collections.Generic;
     using System.Configuration;
-    using System.Drawing;
-    using System.Drawing.Drawing2D;
-    using System.Drawing.Imaging;
-    using System.Drawing.Text;
     using System.IO;
     using System.Reflection;
-    using Newtonsoft.Json;
     using Telegram.Bot;
     using Telegram.Bot.Args;
-    using Telegram.Bot.Types.InputFiles;
     using Topshelf;
-    using OpenQA.Selenium.Chrome;
-    using OpenQA.Selenium;
     using SeleniumScreener;
 
     class Service : ServiceControl
@@ -33,6 +25,7 @@
         private void ProcessMessages()
         {
             var meName = "@" + Bot.GetMeAsync().Result.Username;
+            var rkm = new Telegram.Bot.Types.ReplyMarkups.ReplyKeyboardMarkup();
             Console.WriteLine(meName);
             Bot.SetWebhookAsync("").Wait();
             Bot.OnUpdate += (object su, UpdateEventArgs evu) =>
@@ -41,12 +34,18 @@
                 {
                     if (evu.Update.Message.Entities != null && evu.Update.Message.Entities.First().ToString() == "/s")
                     {
-                        Bot.SendTextMessageAsync(evu.Update.Message.Chat.Id, "Send a link");
-                        //String linkURL;
-                        //linkURL = Console.ReadLine();
-                        //var screener = new Screener();
-                        //screener.GetScreenshot(linkURL);
-                        //string fileId;
+
+                    }
+                    if (evu.Update.Message.Text.Contains ("скрин"))
+                    {
+                        Bot.SendTextMessageAsync(evu.Update.Message.From.Id, "Send a link");
+                    }
+                    if (evu.Update.Message.Text.Contains("http"))
+                    {
+                        String linkURL = evu.Update.Message.Text;
+                        linkURL = Console.ReadLine();
+                        var screener = new Screener();
+                        screener.GetScreenshot(linkURL);
                     }
                 }
                 catch (Exception ex) { Console.WriteLine(ex); }

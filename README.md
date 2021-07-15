@@ -1,3 +1,3 @@
-Telegram bot for creating screenshots of posts on Twitter
-(TelegramBotApi, Selenium WebDriver, XPath)
+TelegramBotApi - https://core.telegram.org/bots/api /n
+g
  

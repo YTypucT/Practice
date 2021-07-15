@@ -1,5 +1,4 @@
 
-*.sln
 TeleBot2/.local-chrome/86.0.4240.183/86.0.4240.183.manifest
 TeleBot2/.local-chrome/86.0.4240.183/chrome.dll
 TeleBot2/.local-chrome/86.0.4240.183/chrome_100_percent.pak
@@ -165,3 +164,4 @@ TeleBot2/chrome-win/v8_context_snapshot.bin
 TeleBot2/chrome-win/vk_swiftshader.dll
 TeleBot2/chrome-win/vk_swiftshader_icd.json
 TeleBot2/chrome-win/vulkan-1.dll
+*.p7s

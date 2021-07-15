@@ -113,13 +113,9 @@ namespace SeleniumScreener
         {
             ChromeDriver browser;
             var options = new ChromeOptions();
-            //if (!Environment.UserInteractive)
-            //  options.AddArgument("headless");
             options.UnhandledPromptBehavior = UnhandledPromptBehavior.Dismiss;
-            //options.AddArguments("proxy-server=socks5://127.0.0.1:" + portSocks);
             options.AddExcludedArgument("enable-automation");
             options.AddArgument("disable-blink-features=AutomationControlled");
-            //options.BinaryLocation = ConfigBinary_location;
             options.AddArgument("no-default-browser-check");
             options.AddArgument("no-first-run");
             options.AddArgument("incognito");
@@ -137,7 +133,6 @@ namespace SeleniumScreener
             options.AddArgument("window-size=1920,1080");
             options.AddUserProfilePreference("download.prompt_for_download", "false");
             options.AddUserProfilePreference("download.directory_upgrade", "true");
-            //options.AddUserProfilePreference("download.default_directory", DownloadsFolder);
             options.AddUserProfilePreference("profile.default_content_setting_values.automatic_downloads", 1);
             options.AddUserProfilePreference("profile.content_settings.exceptions.automatic_downloads.*.setting", 1);
             options.AddUserProfilePreference("profile.default_content_settings.popups", 0);
@@ -150,9 +145,10 @@ namespace SeleniumScreener
             {
                 var article = browser.FindElementByTagName("article");
                 Screenshot screen = browser.GetScreenshot();
-                var bmpScreen = new Bitmap(new MemoryStream(screen.AsByteArray));
                 var cropArea = new Rectangle(article.Location, article.Size);
-                bmpScreen.Clone(cropArea, bmpScreen.PixelFormat).Save("C:\\Users\\Viktor\\Source\\Repos\\TeleBot\\TeleBot2\\ScreenshotTwitter.png");
+                var folder = Directory.CreateDirectory(Path.Combine(FolderCurrent, "Screens", "Twitter", DateTime.Now.ToString("yyyyMMdd"))).FullName;
+                int counter = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly).Length;
+                GetEntireScreenshot(browser, cropArea).Save(Path.Combine(folder, String.Format("Screen_{0}.png", counter + 1)));
             }
             //else if (linkURL.Contains("facebook"))
             //{
@@ -162,12 +158,13 @@ namespace SeleniumScreener
             //    var cropArea = new Rectangle(article.Location, article.Size);
             //    screen.SaveAsFile(@"C:\Users\Viktor\Source\Repos\TeleBot\TeleBot2\ScreenshotFacebook.png");
             //}
-            else if (linkURL.Contains("vk"))
-            {
-                var post = browser.FindElementByXPath("//*[contains (@class, '_post_content') and not contains (@class, 'replies')]");
-                var cropArea = new Rectangle(post.Location, post.Size);
-                GetEntireScreenshot(browser, cropArea).Save("C:\\Users\\Viktor\\Source\\Repos\\TeleBot\\TeleBot2\\ScreenshotVk.png");
-            }
+            //else if (linkURL.Contains("vk"))
+            //{
+            //    var post = browser.FindElementsByClassName("post_info");
+            //    //var post = browser.FindElementByXPath("//*[contains (@class, '_post_content') and not contains (@class, 'replies')]");
+            //    var cropArea = new Rectangle(post.Location, post.Size);
+            //    SaveAs(GetEntireScreenshot(browser, cropArea),ImageFormat.Png, 100);
+            //}
             else
                 Console.WriteLine("The site is incorrect");
             browser.Close();

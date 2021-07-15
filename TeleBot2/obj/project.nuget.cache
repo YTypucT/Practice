@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MjsBaChMZueDo1UZEQ0wuPvk9C9d9/q4P1pH6zkXGmIOjPtWrw9hpv4V6XO+yJUVz9HM/I5kH8zg5crbZ/VYWA==",
+  "dgSpecHash": "24wvmScJDMW+SjTe+5ynYCaPQr6Sf+q2GxQFi9QXeo9S7mVR5fyNe2Zq09LNIB89+I+SaHgbkbAl+7b9EAqtfg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Viktor\\Source\\Repos\\TeleBot\\TeleBot2\\TeleBot2.csproj",
+  "projectFilePath": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\TeleBot2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Viktor\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Viktor\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

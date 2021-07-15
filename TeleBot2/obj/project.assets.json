@@ -5437,11 +5437,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Viktor\\Source\\Repos\\TeleBot\\TeleBot2\\TeleBot2.csproj",
+      "projectUniqueName": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\TeleBot2.csproj",
       "projectName": "TeleBot2",
-      "projectPath": "C:\\Users\\Viktor\\Source\\Repos\\TeleBot\\TeleBot2\\TeleBot2.csproj",
+      "projectPath": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\TeleBot2.csproj",
       "packagesPath": "C:\\Users\\Viktor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Viktor\\Source\\Repos\\TeleBot\\TeleBot2\\obj\\",
+      "outputPath": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Viktor\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -144,7 +144,6 @@ namespace SeleniumScreener
             if (linkURL.Contains("twitter"))
             {
                 var article = browser.FindElementByTagName("article");
-                Screenshot screen = browser.GetScreenshot();
                 var cropArea = new Rectangle(article.Location, article.Size);
                 var folder = Directory.CreateDirectory(Path.Combine(FolderCurrent, "Screens", "Twitter", DateTime.Now.ToString("yyyyMMdd"))).FullName;
                 int counter = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly).Length;

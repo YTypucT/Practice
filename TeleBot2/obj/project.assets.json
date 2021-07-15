@@ -1501,6 +1501,15 @@
         "runtime": {
           "lib/netstandard2.0/TopShelf.ServiceInstaller.dll": {}
         }
+      },
+      "SeleniumScreener/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/SeleniumScreener.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SeleniumScreener.dll": {}
+        }
       }
     }
   },
@@ -5420,12 +5429,18 @@
         "topshelf.serviceinstaller.4.3.0.nupkg.sha512",
         "topshelf.serviceinstaller.nuspec"
       ]
+    },
+    "SeleniumScreener/1.0.0": {
+      "type": "project",
+      "path": "../SeleniumScreener/SeleniumScreener.csproj",
+      "msbuildProject": "../SeleniumScreener/SeleniumScreener.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Selenium.WebDriver >= 3.141.0",
       "Selenium.WebDriver.ChromeDriver >= 91.0.4472.10100",
+      "SeleniumScreener >= 1.0.0",
       "System.Configuration.ConfigurationManager >= 5.0.0",
       "Telegram.Bot >= 15.7.1",
       "Topshelf >= 4.3.0"
@@ -5437,9 +5452,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\TeleBot2.csproj",
-      "projectName": "TeleBot2",
-      "projectPath": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\TeleBot2.csproj",
+      "projectUniqueName": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\TeleBot.csproj",
+      "projectName": "TeleBot",
+      "projectPath": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\TeleBot.csproj",
       "packagesPath": "C:\\Users\\Viktor\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\obj\\",
       "projectStyle": "PackageReference",
@@ -5457,7 +5472,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\SeleniumScreener\\SeleniumScreener.csproj": {
+              "projectPath": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\SeleniumScreener\\SeleniumScreener.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

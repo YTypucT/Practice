@@ -165,3 +165,14 @@ TeleBot2/chrome-win/vk_swiftshader.dll
 TeleBot2/chrome-win/vk_swiftshader_icd.json
 TeleBot2/chrome-win/vulkan-1.dll
 *.p7s
+*.v2
+*.png
+*.dll
+*.pak
+*._
+*.xml
+*.TXT
+*.nupkg
+*.exe
+*.cache
+*.pdb

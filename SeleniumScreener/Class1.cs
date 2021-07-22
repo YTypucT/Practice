@@ -6,16 +6,19 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace SeleniumScreener
 {
+
     public class Screener
     {
+        String Binary_location;
+        public Screener (String Binary_location) 
+        {
+            this.Binary_location = Binary_location;
+        }
         static readonly string FolderCurrent = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public static Bitmap GetEntireScreenshot(ChromeDriver browser, Rectangle cropArea)
         {
@@ -96,6 +99,8 @@ namespace SeleniumScreener
         }
         public static byte[] SaveAs(Image image, ImageFormat imageFormat, Int64 quality)
         {
+            var folder = Directory.CreateDirectory(Path.Combine(FolderCurrent, "Screens", "Twitter", DateTime.Now.ToString("yyyyMMdd"))).FullName;
+            int counter = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly).Length;
             ImageCodecInfo[] imageCodecs = ImageCodecInfo.GetImageDecoders();
             ImageCodecInfo formatEncoder = Array.Find<ImageCodecInfo>(imageCodecs, (c => c.FormatID == imageFormat.Guid));
             if (formatEncoder == null)
@@ -105,14 +110,17 @@ namespace SeleniumScreener
             using (var ms = new MemoryStream())
             {
                 encoderParameters.Param[0] = qualityEncoderParameter;
-                image.Save(ms, formatEncoder, encoderParameters);
+                image.Save(ms, formatEncoder, encoderParameters); 
+                image.Save(Path.Combine(folder, String.Format("Screen_{0}.png", counter + 1)));
                 return ms.ToArray();
             }
         }
-        public void GetScreenshot (String linkURL)
+        public byte[] GetScreenshot (String linkURL)
         {
+            byte[] image = {};
             ChromeDriver browser;
             var options = new ChromeOptions();
+            options.BinaryLocation = Binary_location;
             options.UnhandledPromptBehavior = UnhandledPromptBehavior.Dismiss;
             options.AddExcludedArgument("enable-automation");
             options.AddArgument("disable-blink-features=AutomationControlled");
@@ -136,18 +144,19 @@ namespace SeleniumScreener
             options.AddUserProfilePreference("profile.default_content_setting_values.automatic_downloads", 1);
             options.AddUserProfilePreference("profile.content_settings.exceptions.automatic_downloads.*.setting", 1);
             options.AddUserProfilePreference("profile.default_content_settings.popups", 0);
-            browser = new ChromeDriver(FolderCurrent, options, TimeSpan.FromMinutes(10));
+            browser = new ChromeDriver(Path.GetDirectoryName(Binary_location), options, TimeSpan.FromMinutes(10));
             browser.Manage().Window.Size = new Size(1920, 1080);
             browser.Navigate().GoToUrl(linkURL);
-            Thread.Sleep(5000);
+            Thread.Sleep(10000);
 
             if (linkURL.Contains("twitter"))
             {
                 var article = browser.FindElementByTagName("article");
                 var cropArea = new Rectangle(article.Location, article.Size);
-                var folder = Directory.CreateDirectory(Path.Combine(FolderCurrent, "Screens", "Twitter", DateTime.Now.ToString("yyyyMMdd"))).FullName;
-                int counter = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly).Length;
-                GetEntireScreenshot(browser, cropArea).Save(Path.Combine(folder, String.Format("Screen_{0}.png", counter + 1)));
+                //var folder = Directory.CreateDirectory(Path.Combine(FolderCurrent, "Screens", "Twitter", DateTime.Now.ToString("yyyyMMdd"))).FullName;
+                //int counter = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly).Length;
+                //GetEntireScreenshot(browser, cropArea).Save(Path.Combine(folder, String.Format("Screen_{0}.png", counter + 1)));
+                image = SaveAs(GetEntireScreenshot(browser, cropArea), ImageFormat.Png, 100);
             }
             //else if (linkURL.Contains("facebook"))
             //{
@@ -165,9 +174,12 @@ namespace SeleniumScreener
             //    SaveAs(GetEntireScreenshot(browser, cropArea),ImageFormat.Png, 100);
             //}
             else
+            {
                 Console.WriteLine("The site is incorrect");
+            }
             browser.Close();
             browser.Quit();
+            return image;
         }
     }
 }

@@ -13,15 +13,17 @@
 
     class Service : ServiceControl
     {
-        static readonly string FolderCurrent = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //static readonly string FolderCurrent = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         static readonly string ConfigBotKey = ConfigurationManager.AppSettings["bot_key"];
         static readonly string ConfigBinary_location = ConfigurationManager.AppSettings["binary_location"];
         static TelegramBotClient Bot = new TelegramBotClient(ConfigBotKey);
         public bool Start(HostControl hostControl)
         {
+            var screener = new Screener(ConfigBinary_location);
+            screener.GetScreenshot("https://twitter.com/MosSobyanin/status/1417861910146519044");
             ProcessMessages();
             return true;
-        }
+        } 
         private void ProcessMessages()
         {
             var meName = "@" + Bot.GetMeAsync().Result.Username;
@@ -42,8 +44,9 @@
                     }
                     if (evu.Update.Message.Text.Contains("http"))
                     {
-                        String linkURL = evu.Update.Message.Text;
-                        var screener = new Screener();
+                        var linkURL = evu.Update.Message.Text;
+                        //string linkURL = Console.ReadLine();
+                        var screener = new Screener(ConfigBinary_location);
                         screener.GetScreenshot(linkURL);
                     }
                 }

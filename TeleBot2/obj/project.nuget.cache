@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "H0EnrQ7dzbg8wRyIFo2hy0SeOORaJkXgP0TWm5sxYoiVUP3Bw/S+kgZ+DfKfwWmX3Ax9iCILCA4GD/6nciL1Mw==",
+  "dgSpecHash": "Vs8ADKF9bgNETGb/fnLROE08tn2X3E9uBg/YmV3ca5QYkEjNmN+O5FmrKY7TrButbHvRM/+sea0BVTPrb0+Rsw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Viktor\\Documents\\GitHub\\Practice2\\TeleBot2\\TeleBot.csproj",
   "expectedPackageFiles": [
@@ -27,8 +27,6 @@
     "C:\\Users\\Viktor\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Viktor\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Viktor\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
-    "C:\\Users\\Viktor\\.nuget\\packages\\selenium.webdriver\\3.141.0\\selenium.webdriver.3.141.0.nupkg.sha512",
-    "C:\\Users\\Viktor\\.nuget\\packages\\selenium.webdriver.chromedriver\\91.0.4472.10100\\selenium.webdriver.chromedriver.91.0.4472.10100.nupkg.sha512",
     "C:\\Users\\Viktor\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Viktor\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\Viktor\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

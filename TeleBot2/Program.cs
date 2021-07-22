@@ -43,7 +43,6 @@
                     if (evu.Update.Message.Text.Contains("http"))
                     {
                         String linkURL = evu.Update.Message.Text;
-                        linkURL = Console.ReadLine();
                         var screener = new Screener();
                         screener.GetScreenshot(linkURL);
                     }
